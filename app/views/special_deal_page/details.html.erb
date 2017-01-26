@@ -6,4 +6,12 @@
   <%= scrivito_details_for "Tags" do %>
     <%= scrivito_tag :div, @obj, :tags %>
   <% end %>
+
+  <%= scrivito_details_for "Valid From" do %>
+    <%= scrivito_tag :div, @obj, :valid_from %>
+  <% end %>
+
+  <%= scrivito_details_for "Valid Until" do %>
+    <%= scrivito_tag :div, @obj, :valid_until %>
+  <% end %>
 <% end %>
