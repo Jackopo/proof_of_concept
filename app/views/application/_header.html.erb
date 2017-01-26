@@ -20,23 +20,25 @@
       </ul>
 
       <%= scrivito_tag_list(:ul, home_page, :toclist, class: "nav navbar-nav") do |list, item| %>
-        <% if item.toclist.present? %>
-          <%= list.tag(:li, class: "dropdown", id: "main_nav_page_#{item.id}", data: { path: item.path }) do %>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= scrivito_field(item, :title).presence || "[UNTITLED]" %>
-            </a>
-            <%= scrivito_tag_list(:ul, item, :toclist, class: "dropdown-menu") do |sublist, subitem| %>
-              <%= sublist.tag(:li, id: "main_nav_page_#{subitem.id}", data: { path: subitem.path }) do %>
-                <%= link_to(scrivito_path(subitem)) do %>
-                  <%= scrivito_field(subitem, :title).presence || "[UNTITLED]" %>
+        <% if item.valid? || (scrivito_in_editable_view? && !item.valid?) %>
+          <% if item.toclist.present? %>
+            <%= list.tag(:li, class: "dropdown", id: "main_nav_page_#{item.id}", data: { path: item.path }) do %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= scrivito_field(item, :title).presence || "[UNTITLED]" %>
+              </a>
+              <%= scrivito_tag_list(:ul, item, :toclist, class: "dropdown-menu") do |sublist, subitem| %>
+                <%= sublist.tag(:li, id: "main_nav_page_#{subitem.id}", data: { path: subitem.path }) do %>
+                  <%= link_to(scrivito_path(subitem)) do %>
+                    <%= scrivito_field(subitem, :title).presence || "[UNTITLED]" %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        <% else %>
-          <%= list.tag(:li, id: "main_nav_page_#{item.id}", data: { path: item.path }) do %>
-            <%= link_to(scrivito_path(item)) do %>
-              <%= scrivito_field(item, :title).presence || "[UNTITLED]" %>
+          <% else %>
+            <%= list.tag(:li, id: "main_nav_page_#{item.id}", data: { path: item.path }) do %>
+              <%= link_to(scrivito_path(item)) do %>
+                <%= scrivito_field(item, :title).presence || "[UNTITLED]" %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>

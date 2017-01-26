@@ -38,4 +38,9 @@ class Obj < Scrivito::BasicObj
     ""
   end
 
+  def valid?
+    return true unless self.respond_to?(:valid_from) || self.respond_to?(:valid_from)
+    self.valid?
+  end
+
 end
