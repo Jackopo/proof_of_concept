@@ -1,0 +1,2 @@
+class SpecialDealPageController < CmsController
+end
