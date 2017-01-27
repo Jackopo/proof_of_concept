@@ -38,9 +38,9 @@ class Obj < Scrivito::BasicObj
     ""
   end
 
-  def valid?
+  def active?
     return true unless self.respond_to?(:valid_from) || self.respond_to?(:valid_from)
-    self.valid?
+    self.active?
   end
 
 end

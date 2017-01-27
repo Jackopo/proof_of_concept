@@ -1,4 +1,4 @@
-<% unless !widget.is_valid? && !scrivito_in_editable_view? %>
+<% unless !widget.active? && !scrivito_in_editable_view? %>
   <%= scrivito_tag(:h3, widget, :title) %>
   <div>
     <%= scrivito_tag(:p, widget, :body) %>
