@@ -38,8 +38,13 @@ class Obj < Scrivito::BasicObj
     ""
   end
 
+  def expirable?
+    return true if self.respond_to?(:valid_from) || self.respond_to?(:valid_from)
+    false
+  end
+
   def active?
-    return true unless self.respond_to?(:valid_from) || self.respond_to?(:valid_from)
+    return true unless self.expirable?
     self.active?
   end
 
