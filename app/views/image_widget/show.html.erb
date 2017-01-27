@@ -1,11 +1,13 @@
-<% if !scrivito_in_editable_view? && widget.show_in_lightbox? && widget.image.present? %>
-  <%= link_to(scrivito_path(widget.image), data: {
-    toggle: "lightbox",
-    title: widget.image.title,
-    gallery: "lightbox-gallery",
-  }) do %>
+<% if is_active? widget %>
+  <% if !scrivito_in_editable_view? && widget.show_in_lightbox? && widget.image.present? %>
+    <%= link_to(scrivito_path(widget.image), data: {
+      toggle: "lightbox",
+      title: widget.image.title,
+      gallery: "lightbox-gallery",
+    }) do %>
+      <%= scrivito_image_tag(widget, :image, { class: "img-responsive" }, { transform: { width: 970 } }) %>
+    <% end %>
+  <% else %>
     <%= scrivito_image_tag(widget, :image, { class: "img-responsive" }, { transform: { width: 970 } }) %>
   <% end %>
-<% else %>
-  <%= scrivito_image_tag(widget, :image, { class: "img-responsive" }, { transform: { width: 970 } }) %>
 <% end %>

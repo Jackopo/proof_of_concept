@@ -1,5 +1,6 @@
 class ImageWidget < Widget
-
+  include Expirable
+  
   attribute :image, :reference
   attribute :show_in_lightbox, :enum, values: %w[yes no], default: "no"
 

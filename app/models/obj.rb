@@ -19,6 +19,7 @@ class Obj < Scrivito::BasicObj
   def self.section_widgets
     [
       SectionWidget,
+      ExpirableSectionWidget,
     ]
   end
 

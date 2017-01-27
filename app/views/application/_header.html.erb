@@ -20,7 +20,7 @@
       </ul>
 
       <%= scrivito_tag_list(:ul, home_page, :toclist, class: "nav navbar-nav") do |list, item| %>
-        <% if item.active? || (scrivito_in_editable_view? && !item.active?) %>
+        <% if is_active? item %>
           <% if item.toclist.present? %>
             <%= list.tag(:li, class: "dropdown", id: "main_nav_page_#{item.id}", data: { path: item.path }) do %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
