@@ -6,8 +6,11 @@ module Expirable
     attribute :valid_until, :date
 
     def active?
+      now = Time.zone.now
       return true if self.valid_from.nil? && self.valid_until.nil?
-      return true if self.valid_from < Time.zone.now && self.valid_until > Time.zone.now
+      return true if self.valid_from.nil? && (self.valid_until.present? && self.valid_until > now)
+      return true if (self.valid_from.present? && self.valid_from < now) && self.valid_until.nil?
+      return true if (self.valid_from.present? && self.valid_from < now) && (self.valid_until.present? && self.valid_until > now)
       false
     end
   end
