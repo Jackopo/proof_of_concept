@@ -13,3 +13,9 @@ gem 'scrivito_advanced_editors'
 gem 'secure_headers'
 gem 'uglifier', '>= 1.3.0'
 gem 'pry-byebug'
+
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
